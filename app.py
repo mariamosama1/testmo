@@ -25,22 +25,21 @@ if uploaded_file is not None:
 
 if uploaded_file is not None and st.button("Predict"):
 
-    # Convert uploaded image to grayscale
+
     img = image.convert("L")
 
-    # Resize to 64x64
+   
     img = img.resize((64, 64))
 
-    # Convert to NumPy array
+    
     img = np.array(img)
 
-    # Normalize (only if you normalized during training)
+    
     img = img / 255.0
 
-    # Flatten to 4096 features
+    
     img = img.reshape(1, 4096)
 
-    # Predict
     prediction = deep_model.predict(img)
 
     predicted_class = np.argmax(prediction, axis=1)[0]
